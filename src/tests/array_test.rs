@@ -38,3 +38,19 @@ fn creates_tensor() {
 fn rejects_invalid_shape() {
     Array::matrix(vec![1.0, 2.0, 3.0], 2, 2);
 }
+
+/// Tests the array length.
+#[test]
+fn returns_array_length() {
+    let vector = Array::vector(vec![1, 2, 3]);
+
+    assert_eq!(vector.len(), 3);
+}
+
+/// Tests whether an array is empty.
+#[test]
+fn identifies_empty_array() {
+    let vector: Array<i32> = Array::vector(vec![]);
+
+    assert!(vector.is_empty());
+}

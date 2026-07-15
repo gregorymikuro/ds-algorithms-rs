@@ -23,16 +23,11 @@ impl<T> Array<T> {
     pub fn vector(data: Vec<T>) -> Self {
         let length = data.len();
 
-        Self::new(data, vec![length])
-            .expect("vector shape is calculated from its data")
+        Self::new(data, vec![length]).expect("vector shape is calculated from its data")
     }
 
     /// Creates a two-dimensional array.
-    pub fn matrix(
-        data: Vec<T>,
-        rows: usize,
-        columns: usize,
-    ) -> Result<Self, ArrayError> {
+    pub fn matrix(data: Vec<T>, rows: usize, columns: usize) -> Result<Self, ArrayError> {
         Self::new(data, vec![rows, columns])
     }
 
@@ -49,5 +44,15 @@ impl<T> Array<T> {
     /// Returns the number of dimensions.
     pub fn ndim(&self) -> usize {
         self.shape.len()
+    }
+
+    /// Returns the number of elements.
+    pub fn len(&self) -> usize {
+        self.data.len()
+    }
+
+    /// Returns whether the array contains no elements.
+    pub fn is_empty(&self) -> bool {
+        self.data.is_empty()
     }
 }
